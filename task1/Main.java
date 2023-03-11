@@ -1,5 +1,7 @@
+// Доделать методы суммы и разности векторов в классе Vector
+
 package task1;
-import task1.model.*;;
+import task1.model.*;
 public class Main {
 
     public static void main(String[] args) {
