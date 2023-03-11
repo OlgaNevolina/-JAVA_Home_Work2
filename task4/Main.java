@@ -2,27 +2,34 @@
 
 package task4;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        int[] numbers = {10, -5, 13, -7, 24, -8, 16};
-        replaceNegative(numbers);
-        System.out.println(Arrays.toString(numbers));
+        int[] array = new int[]{10, -5, 13, -7, 24, -8, 16};
+        printArray(array);
+        replaceNegative(array);
+        printArray(array);
     }
 
-    public static void replaceNegative(int[] numbers) {
+    private static void printArray(int[] array) {
+        String res = "[";
+        for (int i = 0; i < array.length; i++) {
+            res += array[i] + (i == array.length - 1 ? "]" : ",");
+        }
+        System.out.println(res);
+    }
+
+    private static void replaceNegative(int[] array) {
         int sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] < 0) {
-                for (int j = 0; j < numbers.length; j++) {
-                    if (numbers[j] >= 10 && numbers[j] <= 99) {
-                        sum += j;
-                    }
-                }
-                numbers[i] = sum;
-                sum = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if ((10 <= array[i] && array[i] <= 99) || (-99 <= array[i] && array[i] <= -10)) {
+                sum += i;
             }
         }
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) array[i] = sum;
+        }
+
     }
 }
